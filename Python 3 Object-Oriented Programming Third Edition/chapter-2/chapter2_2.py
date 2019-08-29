@@ -59,4 +59,4 @@ class SecretString:
         if pass_phrase == self.__pass_phrase:
             return self.__plain_string
         else:
-            return ""
+            return "" 
