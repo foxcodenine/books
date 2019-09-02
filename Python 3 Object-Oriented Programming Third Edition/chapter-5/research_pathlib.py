@@ -90,3 +90,13 @@ path2 = Path(r'.\chapter05\zip_folder')
 
 print(path1.name)
 print(path2.name)
+
+#_______________________________________________________________________
+
+# 8. Creating a new directory 
+
+from pathlib import Path
+new_path = r'P:\projects\testfolder'
+new_path = Path(new_path)
+new_path.mkdir()
+
