@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="eng">
+    <head>
+
+        <title>Border Images</title>
+        <style type="text/css">
+
+            p {border: 15px solid black;
+                width: 250px;
+                height: 100px;
+                margin: 30px auto 20px auto;}
+
+            p.one {border-image: url("images/dots.gif") 11 11 11 11 stretch;}
+
+            p.two {border-image: url("images/dots.gif") 11 11 11 11 repeat;
+                    margin: 70px auto 70px auto;}
+
+            p.three {border-image: url("images/dots.gif") 11 11 11 11 round;}
+
+
+
+        </style>
+    </head>
+    <body>
+        <p class="one"></p>
+        <p class="two"></p>
+        <p class="three"></p>
+    </body>
+</html>
