@@ -4,8 +4,30 @@
         <title>Aligning Form Controls problems</title>
         <style type="text/css">        
         * {
-            font-family: Arial, Helvetica, sans-serif;}        
+            font-family: Arial, Helvetica, sans-serif;} 
+
+			div {
+				border-bottom: 1px solid #efefef;
+				margin: 10px;
+				padding-bottom: 10px;
+				width: 260px;}
+			.title {
+				float: left;
+				width: 50px;
+				text-align: right;
+				padding-right: 10px;}
+
+            .submit {
+                text-align: right;}
+            
+            #submit {border-radius: 12px;
+                    border: 1px solid #a5a5a5;
+                    padding: 3px;
+                    width: 80px;}
+           
         </style>
+
+        
 
     </head>
     <body>
@@ -25,7 +47,7 @@
                 <input type="radio" id="female" value="F" name="gender">
                 <label for="female">F</label>
             </div>
-            <div>
+            <div class="submit">
                 <input type="submit" id="submit" value="Register">
             </div>
 
