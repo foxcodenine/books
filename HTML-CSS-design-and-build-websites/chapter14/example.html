@@ -14,6 +14,49 @@
                 line-height: 1.6em;
                 list-style-image: url('images/icon-plus.png');
             }
+
+            table {border-spacing: 0px}
+
+            th, td {
+                /*border: 1px solid black;*/
+                padding: 5px 30px 5px 10px;
+                border-spacing: 0px;
+                font-size: 90%;
+                margin: 0;
+                /*width: 200px;*/}
+            
+            th, td {
+                text-align: left;
+                background-color: #e0e9f0;
+                border-top: 1px solid #f1f8fe;
+                border-bottom: 1px solid #cbd2d8;
+                border-right:  1px solid #cbd2d8;} 
+
+            
+
+            tr.head th {
+                color: #fff;
+                background-color: #90b4d6;
+                border-bottom: 2px solid #547ca0;
+                border-right: 1px solid #749abe;
+                border-top: 1px solid #90b4d6;
+                text-align: center;
+                text-shadow: -1px -1px 1px #666;
+                letter-spacing: .15em;}  
+            
+            td {text-shadow: 1px 1px 1px #fff;}
+
+            tr.even td, tr.even th {background-color: #e8eff5;}
+
+            tr.head th:first-child {border-top-left-radius: 5px;}
+
+            tr.head th:last-child {border-top-right-radius: 5px;
+            }
+
+                     
+
+           
+
             
         </style>
     </head>
@@ -29,6 +72,40 @@
             <li>Walt Whitman at War</li>
             <li>Found Poems and Outsider Poetry</li>
         </ul>
+
+        <table>
+            <tr class="head">
+                <th></th>
+                <th>New York</th>
+                <th>Chicago</th>
+                <th>San Francisco</th>
+            </tr>
+            <tr>
+                <th>A Poetic Perspective</th>
+                <td>Sat, 3 Mar 2012<br>11am - 2pm</td></td>
+                <td>Sat, 3 Mar 2012<br>11am - 2pm</td></td>
+                <td>Sat, 17 Mar 2012<br>11am - 2pm</td></td>
+            </tr>
+            <tr class="even">
+                <th>Walt Whitman at War</th>
+                <td>Sat, 7 Apr 2012<br>11am - 1pm</td>
+                <td>Sat, 5 May 2012<br>11am - 1pm</td>
+                <td>Sat, 19 May 2012<br>11am - 1pm</td>
+            </tr>
+            <tr>
+                <th>Found Poems &amp; Outsider Poetry</th>
+                <td>Sat, 9 Jun 2012<br>11am - 2pm</td>
+                <td>Sat, 7 Jul 2012<br>11am - 2pm</td>
+                <td>Sat, 21 Jul 2012<br>11am - 2pm</td>
+            </tr>
+            <tr class="even">
+                <th>Natural Death: An Exploration</th>
+                <td>Sat, 4 Aug 2012<br>11am - 4am</td>
+                <td>Sat, 8 Sep 2012<br>11am - 4pm</td>
+                <td>Sat, 15 Sep 2012<br>11am - 4pm</td>
+            </tr>
+
+        </table>
         
     </body>
 </html>
