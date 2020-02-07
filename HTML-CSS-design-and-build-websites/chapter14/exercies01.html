@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <title>formalize.me</title>
+        <link href="https://fonts.googleapis.com/css?family=Inria+Serif|Lato|Noto+Serif|Noto+Serif+JP|Open+Sans|Roboto|Source+Serif+Pro&display=swap" rel="stylesheet">
+        <style type="text/css">
+
+        /* font-family: 'Source Serif Pro', serif;
+        font-family: 'Noto Serif', serif;
+        font-family: 'Lato', sans-serif;
+        font-family: 'Roboto', sans-serif;
+        font-family: 'Open Sans', sans-serif; */
+
+
+        body 
+            {background-image: url('images/background.jpg');
+            font-family: 'Noto Serif JP', serif;
+            font-size: 14px;
+            font-weight: lighter;
+            color: #414141;}
+
+        h1 {color: #803939;
+            font-size: 140%;}
+
+        #main {
+            border: 1px solid white;
+            width: 430px;
+            padding: 10px;
+            margin: 30px 0 0 10px;
+            text-align: left;}
+            
+        p#note {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 85%;
+            background-color: #ffffcc;
+            padding: 10px;
+            border-top: 1px solid #eeeeee;
+            border-left: 1px solid #dddddd;
+            border-right: 1px solid #c1c1c1;
+            border-bottom: 1px solid #cccccc;}
+
+   
+        
+        .type1 {
+            margin-right: 0px;
+            margin-left: 15px;
+            width: 350px;
+            
+        }
+
+        .type2{
+            margin-top: 20px;}
+   
+
+
+        span.type3 {width: 60px;
+                    float: left;
+                    text-align: right;}
+
+        label, .type_label {font-size: 85%;}
+
+        #label_cc {text-decoration: underline dotted #414141;}
+
+        #url {color: #777777;}    
+        
+        
+        
+        
+
+        
+        
+        </style>
+    </head>
+    <body>
+        <div id="main">
+            <form action="#">
+                <h1>Example</h1>
+                <p id="note"><b>Note: </b>This is just a demo - It doesn't
+                actually submit anything.</p>
+                
+                <div class="type2">
+                    <span class="type3">
+                    <label for="name">Name </label>
+                    </span>
+                    <input type="text" class="type1" id="name">
+                </div>
+                <div class="type2">
+                    <span class="type3">
+                    <label for="email">Email </label>
+                    </span>
+                    <input type="text" class="type1" id="email">
+                </div>
+                <div class="type2">
+                    <span class="type3">
+                    <label for="cc" id="label_cc">CC</label>
+                    </span>
+                    <span class="type1"><input type="checkbox" id="cc"> 
+                       <span class="type_label">Send me a copy of this email</span> 
+                    </span>                    
+                </div>
+                <div class="type2">
+                    <span class="type3">
+                    <label for="phone">Phone </label>
+                    </span>
+                    <input type="text" class="type1" id="phone">
+                </div>
+                <div class="type2">
+                    <span class="type3">
+                    <label for="url">URL </label>
+                    </span>
+                    <input type="text" class="type1" id="url" value="http://">
+                </div>
+            </form>
+        </div>
+        
+    </body>
+</html>
