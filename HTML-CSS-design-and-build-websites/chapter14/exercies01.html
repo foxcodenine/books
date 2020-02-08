@@ -44,24 +44,88 @@
         .type1 {
             margin-right: 0px;
             margin-left: 15px;
-            width: 350px;
-            
-        }
+            width: 345px;
+            }
+        
+        
+        
+   
+
+     
+
+        textarea {width: 200px;
+            width: 345px;
+            margin-left: 15px}
 
         .type2{
-            margin-top: 20px;}
+            margin-top: 20px;
+            }
    
 
 
         span.type3 {width: 60px;
                     float: left;
                     text-align: right;}
+        
+        .type4 {margin-left: 10px;}
+
+        #low {
+            color: rgb(146, 146, 146);
+            font-style: normal;}
+        #rfp {
+            font-style: normal;
+            text-decoration: underline dotted #414141;}
+        #rfp:hover {cursor: help;}
 
         label, .type_label {font-size: 85%;}
 
         #label_cc {text-decoration: underline dotted #414141;}
 
         #url {color: #777777;}    
+
+        #line {
+            border-top: 1px solid #d5d9dc;
+            border-bottom: 1px solid #d5d9dc;
+            }
+
+        .submit {
+            margin: 20px 0px 20px 0px;
+            border-radius: 5px;
+            padding: 3px 10px 3px 10px;
+            border: 1px solid #bbbbbb;
+            border-radius: 1px solid #999999;
+            border-top: 1px solid #dddddd;
+            background: linear-gradient( 0deg, #dddddd, #fefefe);
+            font-size: 85%;
+            font-weight: bold;
+            color: #414141;}
+        .submit:hover {cursor: pointer;}
+
+        #fire_away {display: inline-block;}
+        #reset {float: right;}
+
+        input[type="text"]:hover, input:focus{
+            background-color:  rgb(232, 235, 240);
+            border: 1px solid rgb(64, 83, 119);
+            height: 17px;}
+        
+        textarea:hover, textarea:focus {
+            background-color:  rgb(232, 235, 240);
+            border: 1px solid rgb(64, 83, 119);
+            }
+        
+        .type6:hover {border: 5px solid rgb(0, 0, 0);}
+
+        select{
+            max-width: 350px;
+            min-width: 350px;
+            width: 350px !important;
+            margin-left: 15px;
+            max-height: 20px;
+            min-height: 20px;
+            height: 20px !important;
+            
+        }
         
         
         
@@ -109,6 +173,66 @@
                     <label for="url">URL </label>
                     </span>
                     <input type="text" class="type1" id="url" value="http://">
+                </div>
+                <div class="type2">
+                    <span class="type3">
+                    <label for="budget">Budget </label>
+                    </span>
+                    
+                    <select class="type1" id="budget" name="budget">
+                        <option value="">Ballpark estimate...</option>
+                        <optgroup label="Small">
+                          <option value="1k_2k">$1,000 to 2,000</option>
+                          <option value="2k_3k">$2,000 to 3,000</option>
+                          <option value="3k_4k">$3,000 to 4,000</option>
+                          <option value="4k_5k">$4,000 to 5,000</option>
+                          <option value="5k_6k">$5,000 to 6,000</option>
+                        </optgroup>
+                        <optgroup label="Medium">
+                          <option value="6k_7k">$6,000 to 7,000</option>
+                          <option value="7k_8k">$7,000 to 8,000</option>
+                          <option value="8k_9k">$8,000 to 9,000</option>
+                          <option value="9k_1k0">$9,000 to 10,000</option>
+                          <option value="10k_11k">$10,000 to 11,000</option>
+                        </optgroup>
+                        <optgroup label="Large">
+                          <option value="11k_12k">$11,000 to 12,000</option>
+                          <option value="12k_13k">$12,000 to 13,000</option>
+                          <option value="13k_14k">$13,000 to 14,000</option>
+                          <option value="14k_15k">$14,000 to 15,000</option>
+                          <option value="15k_16k">$15,000 to 16,000</option>
+                        </optgroup>
+                        <optgroup label="Jumbo">
+                          <option value="16k_17k">$16,000 to 17,000</option>
+                          <option value="17k_18k">$17,000 to 18,000</option>
+                          <option value="18k_19k">$18,000 to 19,000</option>
+                          <option value="19k_20k">$19,000 to 20,000</option>
+                        </optgroup>
+                        <optgroup label="Ginormous">
+                          <option value="over_20k">over $20,000</option>
+                        </optgroup>
+                      </select>
+                </div>
+                <div class="type2">
+                    <span class="type3"><label for="#">Priority</label></span>
+                    <label class="type4"><input type="radio" class="type6" name="priority value="urgent"> Urgent</label>
+                    <label class="type4"><input type="radio" class="type6" name="priority value="normal" checked> Normal</label>
+                    <label class="type4"><input type="radio" class="type6" name="priority value="low">
+                        <i id="rfp"> RFP</i><i id="low"> (low)</i></label>
+                </div>
+                <div class="type2">
+                    <span class="type3">
+                    <label for="url">Project details </label>
+                    </span>
+                    <textarea class="type5" name="project_details" 
+                    id="project_details" cols="30" rows="8"></textarea>
+                </div>
+                <div>
+                    <div class="type2" id="line">                    
+                                
+                        <button id="fire_away" class="submit">Fire away</button>
+                        <button id="reset" class="submit">Reset</button>
+                    </div>
                 </div>
             </form>
         </div>
