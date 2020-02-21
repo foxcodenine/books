@@ -4,6 +4,13 @@
         <title>Layout Testpage</title>
     </head>
     <style type="text/css">
+    
+        * {
+            text-align: center;
+            font-size: 50px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #665544;}
+        
 
         body {background-color: #efefef;}
 
@@ -35,44 +42,32 @@
             margin: 20px 10px 20px 10px;
             }
 
-        .w940 {
+        .w940,.w700, .w620, .w460, .w300, .w220, .w140 {
             width: 940px;
             height: 100%;          
             float: left; 
-            margin: 0px;           
+            margin: 0 0 0 20px;           
             background-color: chartreuse;
             }
+        .w700 {width: 700px;}
 
-        .w460 {
-            width: 460px;
-            height: 100%;          
-            float: left;
-            margin: 0px 0px 0px 20px;
-            background-color: chartreuse;
-            }
-        .w300 {
-            width: 300px;
-            height: 100%;          
-            float: left;
-            margin: 0px 0px 0px 20px;
-            background-color: chartreuse;
-            }
-        .w220 {
-            width: 220px;
-            height: 100%;          
-            float: left;
-            margin: 0px 0px 0px 20px;
-            background-color: chartreuse;
-            }
-        .w140 {
-            width: 140px;
-            height: 100%;          
-            float: left;
-            margin: 0px 0px 0px 20px;
-            background-color: chartreuse;
-            }
+        .w620 {width: 620px;}
+
+        .w460 {width: 460px;}
+
+        .w300 {width: 300px;}
+
+        .w220 {width: 220px;}
+
+        .w140 {width: 140px;}
 
         .w1st {margin: 0;}
+
+        b {
+            font-size: 50px;           
+            color: black;
+            display: inline-block;
+            margin-top: 55px;}
          
         
 
@@ -98,31 +93,31 @@
             <div class="class3">
                 <div>
                     <div class="five_rows">
-                        <p class="w940"></p>
+                        <p class="w940 w1st"><b>940px</b></p>
 
                     </div>
                     <div class="five_rows">
-                        <p class="w460 w1st"></p>
-                        <p class="w460"></p>
+                        <p class="w460 w1st"><b>460px</b></p>
+                        <p class="w460"><b>460px</b></p>
                     </div>
                     <div class="five_rows">
-                        <p class="w300 w1st"></p>
-                        <p class="w300"></p>
-                        <p class="w300"></p>
+                        <p class="w300 w1st"><b>300px</b></p>
+                        <p class="w300"><b>300px</b></p>
+                        <p class="w300"><b>300px</b></p>
                     </div>
                     <div class="five_rows">
-                        <p class="w220 w1st"></p>
-                        <p class="w220"></p>
-                        <p class="w220"></p>
-                        <p class="w220"></p>
+                        <p class="w220 w1st"><b>220px</b></p>
+                        <p class="w220"><b>220px</b></p>
+                        <p class="w220"><b>220px</b></p>
+                        <p class="w220"><b>220px</b></p>
                     </div>
                     <div class="five_rows">
-                        <p class="w140 w1st"></p>
-                        <p class="w140"></p>
-                        <p class="w140"></p>
-                        <p class="w140"></p>
-                        <p class="w140"></p>
-                        <p class="w140"></p>
+                        <p class="w140 w1st"><b>140px</b></p>
+                        <p class="w140"><b>140px</b></p>
+                        <p class="w140"><b>140px</b></p>
+                        <p class="w140"><b>140px</b></p>
+                        <p class="w140"><b>140px</b></p>
+                        <p class="w140"><b>140px</b></p>
                     </div>
                 </div>
 
@@ -130,10 +125,53 @@
 
         </div>
         <div id="paper">
+            <p class="class1"></p>
+            <p class="class2"></p>
+            <p class="class1"></p>
+            <p class="class2"></p>
+            <p class="class1"></p>
+            <p class="class2"></p>
+            <p class="class1"></p>
+            <p class="class2"></p>
+            <p class="class1"></p>
+            <p class="class2"></p>
+            <p class="class1"></p>
+            <p class="class2"></p>
+
+            <div class="class3">
+                <div>
+                    <div class="five_rows">
+                        <p class="w300 w1st"><b>300px</b></p>
+                        <p class="w620"><b>620px</b></p>
+                    </div>
+                    <div class="five_rows">
+                        <p class="w220 w1st"><b>220px</b></p>
+                        <p class="w700"><b>700px</b></p>
+                    </div>
+                    <div class="five_rows">
+                        <p class="w460 w1st"><b>460px</b></p>
+                        <p class="w220"><b>220px</b></p>
+                        <p class="w220"><b>220px</b></p>
+                    </div>
+                    <div class="five_rows">
+                        <p class="w300 w1st"><b>300px</b></p>
+                        <p class="w300"><b>300px</b></p>
+                        <p class="w140"><b>140px</b></p>
+                        <p class="w140"><b>140px</b></p>
+                    </div>
+                    <div class="five_rows">
+                        <p class="w220 w1st"><b>220px</b></p>
+                        <p class="w220"><b>220px</b></p>
+                        <p class="w140"><b>140px</b></p>
+                        <p class="w140"><b>140px</b></p>
+                        <p class="w140"><b>140px</b></p>                  
+                    </div>
+                </div>
+
+            </div>
 
         </div>
-        <div id="paper">
+       
 
-        </div>
     </body>
 </html>
