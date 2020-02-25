@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <title>Aligning Images Using CSS</title>
+        <style>
+
+            body {
+                font-family: Georgia, "Times New Roman", serif;
+                color: #665544;
+                
+            }
+
+            .align-left {float: left;}
+
+            .align-right {float: right;}
+
+            .medium {margin: 0 10px;
+                    width: 200px;
+                    height: 200px;}
+
+            .page{
+                width: 750px;
+                border: 3px double #665544;
+                padding: 2px 5px 15px 5px;
+                overflow: auto;
+                text-align: left;
+                margin: 30px auto;}
+
+        
+
+        </style>
+    </head>
+    <body>
+        <div class="page">
+            <p><img src="./images/magnolia-medium.jpg"
+            alt="https://foxcode9.s3.amazonaws.com/magnolia-medium.jpg"
+            class="align-left medium"><b>Magnolia</b> is a large genus that
+            contains over 200 flowering plant species. It is named after French
+            botanist Pierre Magnol and, having evolved before bees appeared, the
+            flowers were developed to encourage pollination by beetle.</p>
+        
+                <p><img src="./images/magnolia-medium.jpg"
+                alt="https://foxcode9.s3.amazonaws.com/magnolia-medium.jpg"
+                class="align-right medium">Some magnolias, such as <i>Magnolia
+                stellata</i> and
+                <i>Magnolia soulangeana</i>, flower quite early in the spring before the leaves
+                open. Others flower in late spring or early summer, such as <i>Magnolia
+                grandiflora</i>.</p>
+        </div>
+    </body>
+</html>
