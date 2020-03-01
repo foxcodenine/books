@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <title>Centering Imeges Using CSS</title>
+        <style>
+
+            .page {width: 95%;
+                    margin: 20px auto;
+                    max-width: 960px;}
+            
+            
+            img.align-center {
+                display: block;
+                margin: 10px auto;}
+            
+            img.medium {
+                width: 250px;
+                height: 250px;}
+
+            .dtborder {
+                    position: relative;
+                    border: 5px solid red;
+                    background: #f8f8f8;
+                    padding: 30px;
+                    }
+
+                    .dtborder:before {
+                    content: "";
+                    position: absolute;
+                    top: 5px;
+                    bottom: 5px;
+                    left: 5px;
+                    right: 5px;
+                    border: 5px solid blue;
+                    }
+
+                    .dtborder:after {
+                    content: "";
+                    position: absolute;
+                    top: 15px;
+                    bottom: 15px;
+                    left: 15px;
+                    right: 15px;
+                    border: 5px solid green;
+}
+
+        </style>
+    </head>
+    <body>
+        <div class="page dtborder">
+            <p>
+                <img src="./images/magnolia-medium.jpg" alt="Magnolia"
+                class="align-center medium">
+                <b><i>Magnolia</i></b> is a large genus that contains over 200
+                flowering plant species. It is named after French botanist Pierre
+                Magnol and, having evolved before bees appeared, the flowers were
+                developed to encourage pollination by beetle
+            </p>
+        </div>
+    </body>
+</html>
+
+
+<!-- check Multiple Borders
+    https://css-tricks.com/snippets/css/multiple-borders/
+    https://stackoverflow.com/questions/49110694/how-to-create-a-triple-overlapping-border-with-css
+ -->
