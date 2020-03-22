@@ -1,0 +1,16 @@
+**./__pycache__
+__pycache__/
+__resources__/
+**./__resources__/
+
+# npm debugging logs
+**./npm-debug.log*
+
+# npm project dependencies
+**./node_modules
+./node_modules
+
+#OSX folder attributes
+**.DS_Store
+.DS_Store
+
