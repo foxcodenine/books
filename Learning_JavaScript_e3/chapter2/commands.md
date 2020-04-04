@@ -47,8 +47,24 @@ $ git reset
 ls -Force
 
 
+
+
+## eslint
+
 ### install eslint in dev
 $ npm install --save-dev eslint
 
 ### or install eslint in g
 $ npm i -g eslint
+
+### to initializatio eslit
+$ npx eslint --init
+
+### to check specific file
+$ npx eslint yourfile.js
+
+### to check all files is directory and sub-directories
+$ npx eslint  **/*.js 
+
+### to fix check and fix file or files
+$ npx eslint --fix yourfile.js     or     $ npx eslint --fix **/*.js 
