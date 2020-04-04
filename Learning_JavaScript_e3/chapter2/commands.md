@@ -39,3 +39,9 @@ $ npm run babelbrowser
 t
 #### list global packages
 $ npm list -g --depth 0
+
+### unstage all from git
+$ git reset
+
+### ls hidden files in powershell
+ls -Force
