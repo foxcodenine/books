@@ -45,3 +45,10 @@ $ git reset
 
 ### ls hidden files ipowershell
 ls -Force
+
+
+### install eslint in dev
+$ npm install --save-dev eslint
+
+### or install eslint in g
+$ npm i -g eslint
