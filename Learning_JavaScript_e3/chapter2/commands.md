@@ -43,5 +43,5 @@ $ npm list -g --depth 0
 ### unstage all from git
 $ git reset
 
-### ls hidden files in powershell
+### ls hidden files ipowershell
 ls -Force
