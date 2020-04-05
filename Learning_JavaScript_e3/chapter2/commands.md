@@ -68,3 +68,8 @@ $ npx eslint  **/*.js
 
 ### to fix check and fix file or files
 $ npx eslint --fix yourfile.js     or     $ npx eslint --fix **/*.js 
+
+
+
+### cloning a git repository OVER SSH:
+$ git clone ssh://git@bitbucket.org:teamsinspace/documentation-tests.git
