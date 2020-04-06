@@ -73,3 +73,9 @@ $ npx eslint --fix yourfile.js     or     $ npx eslint --fix **/*.js
 
 ### cloning a git repository OVER SSH:
 $ git clone ssh://git@bitbucket.org:teamsinspace/documentation-tests.git
+
+### GIT to removing multiple commits (remove the last two commits)
+$ reset --hard HEAD~2 
+
+
+
