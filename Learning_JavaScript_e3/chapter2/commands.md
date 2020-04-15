@@ -43,7 +43,7 @@ $ npm list -g --depth 0
 ### unstage all from git
 $ git reset
 
-### ls hidden files ipowershell
+### ls hidden files powershell
 ls -Force
 
 
@@ -55,7 +55,7 @@ ls -Force
 $ npm install --save-dev eslint
 
 ### or install eslint in g
-$ npm i -g eslint
+$ npm i -g eslint u
 
 ### to initializatio eslit
 $ npx eslint --init
@@ -78,4 +78,51 @@ $ git clone ssh://git@bitbucket.org:teamsinspace/documentation-tests.git
 $ reset --hard HEAD~2 
 
 
+### running a new ubuntu server
 
+$ sudo apt update
+
+$ sudo apt upgrade
+
+$ sudo apt install apache2
+
+##### display apache commands
+$ sudo service apachi2 
+
+##### display apache status
+$ sudo service apachi2 status
+
+## apache directory 
+$ cd /etc/apache2/
+$ ls -l
+
+## sites-available dirc
+$ cd /etc/apache2/sites-available/
+
+#### http  file : 000-default.conf
+#### https file : default-ssl.conf
+$ nano 000-default.conf
+
+### DocumentRoot
+/var/www/html
+
+### check which binary git is:
+$ which git
+
+### check git version:
+$ git --version
+
+### to install git:
+$ sudo install git
+
+### git clone in to a folder (example to html)
+$ git clone https://github.com/robertbunch/jquery-todo.git html
+
+### switch to super user
+$ sudo su
+
+### end su
+$ exit
+
+### change file or folder ownershipp
+$ sudo chown -R newUser folderName/
