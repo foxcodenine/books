@@ -126,3 +126,106 @@ $ exit
 
 ### change file or folder ownershipp
 $ sudo chown -R newUser folderName/
+
+
+
+
+
+
+
+### add https to website:
+
+https://letsencrypt.org/
+https://certbot.eff.org/
+
+on certbot select the Software and System: 
+
+My HTTP website is running 'Software' on 'System'
+
+1. SSH into the server 
+From the terminal connect to the server 
+
+2.Add Certbot PPA 
+Enter the commands given, currenty:
+   $ sudo apt-get update
+   $ sudo apt-get install software-properties-common
+   $ sudo add-apt-repository universe
+   $ sudo add-apt-repository ppa:certbot/certbot
+   $ sudo apt-get update
+
+3.Install Certbot
+Run this command on the command line on the machine to install Certbot.
+   $ sudo apt-get install certbot python-certbot-apache
+
+#.Before going to next step, currently 4. you need to do the following.
+
+  $ cd /etc/apache2/sites-available
+  $ ls -l 
+
+  create a file with nano with the site name with .conf 
+  and insert the following:
+  and update the DocumentRoot, ServerName & <Directory "****">
+  as required:
+
+  $ sudo nano foxhost9.com.conf
+
+<VirtualHost *:80>
+    DocumentRoot /var/www/foxhost9
+    ServerName foxhost9.com 
+    <Directory "/var/www/foxhost9">
+        allow from all 
+        AllowOverride All 
+        Order allow,deny 
+        Options +Indexes
+    </Directory>
+</VirtualHost>
+
+  $ cd /var/www
+  $ sudo mv html foxhost9
+
+  $ cd /etc/apache2/sites-available
+  $ ls
+
+  enter the following command modify as required:
+
+  $ sudo a2ensite foxhost9.com.conf
+  $ sudo service apache2 reload  or $ sudo systemctl reload apache2
+
+
+4.Choose how you'd like to run Certbot
+  $ sudo certbot --apache
+
+  or better or if doesn't work:
+
+  $ sudo certbot --authenticator standalone --installer apache -d foxhost9.com --pre-hook "systemctl stop apache2" --post-hook "systemctl start apache2"
+
+  #and select accordingly:
+
+5. On AWS or your webhost go to inbound rules and open  post 443 (for https traffic).
+
+  $ cd /etc/apache2/sites-available
+  $ ls
+  
+  #and see that a new file is create in this case foxhost9.com-le-ssl.conf
+
+
+### to redirect www.foxhost9.com to foxhost9.com 
+  
+  1. add another A type record with the www example: www.foxhost9.com 
+  pointing to your IPv4 Public IP.
+
+  2. edit with nano your .conf file example: foxhost9.com.conf and add 
+  the following VirtualHost before your VirtualHost:  
+
+
+<VirtualHost *:80>
+    ServerName www.foxhost9.com
+    Redirect permanent / http://foxhost9.com/
+</VirtualHost>
+<VirtualHost *:80>
+  Docume........
+  ................
+  ....
+</VirtualHost>
+
+$ sudo service apache2 restart
