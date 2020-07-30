@@ -1,14 +1,61 @@
+{% from '_helpers.html' import render_feld  %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapter2</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='./style.css')}}">
+
+    {{ moment.include_jquery() }}
+    {{ moment.include_moment() }}
+
 </head>
 <body>
 
+    
 
+
+<div class="hello_conatiner">
     <h1>Hello {{ user }}</h1>
     <p>Welcome to the world of Flask!</p>
+
+
+    <div class="container">
+        <h3 class="title3">macro</h3>
+        {{ render_feld(name='Fullname') }}
+        {{ render_feld(name='Email', type='email') }}
+        {{ render_feld(name='Password', type='password') }}
+    </div>
+
+    <div id="myapp">
+        <div  class="container">
+ 
+            <h3 class="title3">From VueJS</h3>
+            [[ timestamp ]]         
+
+        </div>
+
+        
+        <div class="container">
+            <h3 class="title3">From momentJS</h3>
+            <ul v-for="m in myMoment">
+                <li>[[m]]</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <h3 class="title3">From flask-Moment</h3>
+        <p>The current date and time is: {{ moment().format('MMMM Do YYYY, h:mm:ss a') }}.</p>
+        <p>Something happened {{ moment(then).fromTime(now) }}.</p>
+        <p>{{ moment(then).calendar() }}.</p>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script src="{{ url_for('static', filename='moment.js') }}"></script>
+<script src="../static/script.js"></script>
 </body>
 </html>

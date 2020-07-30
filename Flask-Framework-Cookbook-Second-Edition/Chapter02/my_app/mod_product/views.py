@@ -31,6 +31,8 @@ def product(key):
 
 # _______________________
 
+# Create Filter at blueprint level
+
 # If the filter is at the blueprint level, the decorator would be app_template_filter ;
 # otherwise, at the application level, the decorator would be template_filter;
 
