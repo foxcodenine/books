@@ -59,3 +59,28 @@ from my_app.mod_catalog.views import catalog
 
 app.register_blueprint(catalog)
 
+
+# ______________________________________________________________________
+
+'''
+Request Data
+
+requests.post('http://127.0.0.1:5000/catalog/product-create',
+data={'name': 'iPhone 5S', 'price': '549.0', 'category': 'phone'})
+
+requests.post('http://127.0.0.1:5000/catalog/product-create',
+data={'name': 'Seiko 143', 'price': '1200', 'category': 'watch'})
+
+requests.post('http://127.0.0.1:5000/catalog/product-create',
+data={'name': 'Garmin 426', 'price': '310.0', 'category': 'electronics'})
+
+requests.post('http://127.0.0.1:5000/catalog/product-create',
+data={'name': 'Black Bay 58', 'price': '6300', 'category': 'watch'})
+
+requests.post('http://127.0.0.1:5000/catalog/category-create',
+data={'name': 'jewellery'})
+
+requests.post('http://127.0.0.1:5000/catalog/category-create',
+data={'name': 'gadgets'})
+
+'''
