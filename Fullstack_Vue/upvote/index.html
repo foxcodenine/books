@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UpVote!</title>
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.css">
+    <link rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+    <link rel="stylesheet">
+    <link rel="stylesheet" href="./public/styles.css">
+</head>
+<body>
+    <div id="app">
+    <h2 class="title has-text-centered dividing-header">UpVote!</h2>
+
+    <div class="section">
+        <article class="media" v-for='submission in submissions'v-bind:key='submission.id'>
+            <figure class="media-left">
+                <img src="./public/images/submissions/image-yellow.png" class="image is-64x64"v-bind:src='submission.submissionImage'>
+            </figure>
+            <div class="media-content">
+                <div class="content">
+                    <p>
+                        <strong>
+                            <a href="#" class="has-text-info" v-bind:href='submission.url'>Yellow Pail</a>
+                            <span class="tag is-small">#{{ submission.id }}</span>
+                        </strong>
+                        <br>
+                        On-demand sand castle construction expertise.
+                        <br>
+                        <small class="is-size-7">
+                            Submitted by:
+                            <img src="./public/images/avatars/daniel.jpg" class="image is-24x24" v-bind:src='submission.avatar'>
+                        </small>
+                    </p>
+                </div>
+            </div>
+            <div class="media-right">
+                <span class="icon is-small">
+                    <i class="fa fa-chevron-up">
+                        <strong class="has-text-info">{{ submission.votes }}</strong>
+                    </i>
+                </span>
+            </div>
+        </article>
+        <button v-on:click='testVue'>Print</button>
+    </div>
+
+    
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="./seed.js"></script>
+<script src="./main.js"></script>
+</body>
+</html>
+
+
