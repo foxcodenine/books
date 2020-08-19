@@ -1,17 +1,61 @@
 <template>
     <div id="calendar-entry">
       <div class="calendar-entry-note">
-        <input type="text" placeholder="New Event" />
-        <p class="calendar-entry-day">Day of event: <span class="bold">Monday</span></p>
-        <a class="button is-primary is-small is-outlined">Submit</a>
+        <input type="text" placeholder="New Event"  v-model.lazy="newEvent" />
+        <p class="calendar-entry-day">Day of event: <span class="bold">{{ titleOfActiveDay }}</span></p>
+        <a class="button is-primary is-small is-outlined" v-on:click="submitEvent()">Submit</a>
+
+        <p class="error" v-if="error">
+          You must type something first!
+        </p>
       </div>
     </div>
 </template>
 
 <script>
-export default {
+  import { store } from '../store'
+  export default {
 
-}
+    name: 'CalendarEntry',
+
+    data() {
+      return {
+        newEvent: '',
+        error: false
+      }
+    },
+
+    computed: {
+      titleOfActiveDay() {
+        // console.log(store.getActiveDay().fullTitle)
+        return store.getActiveDay().fullTitle;
+      }
+    },
+
+    methods: {
+      // submitEvent() {
+        
+      //   if (this.newEvent.trim()) {
+      //     const activeDay = store.getActiveDay();
+      //     activeDay.events.push({details: this.newEvent, edit: false})
+      //     this.newEvent = '';
+      //   }
+      // }, // <- this will work also
+
+      submitEvent() {
+
+        if (this.newEvent.trim()) {          
+          store.addEvent(this.newEvent);
+          this.newEvent = '';
+        } 
+        else {
+          this.error = true;
+          setTimeout(()=>{this.error = false;}, 4000);
+        }
+      }
+      
+    },
+  }
 
 </script>
 
@@ -56,6 +100,11 @@ export default {
     .submit {
       display: block;
       margin: 0 auto;
+    }
+
+    .error {
+      color: orangered;
+      font-size: 13px;
     }
   }
 }
