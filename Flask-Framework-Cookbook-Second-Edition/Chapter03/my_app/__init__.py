@@ -1,8 +1,12 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate, MigrateCommand
+from flask_script import Manager 
+
+from redis import Redis
 # ______________________________________________________________________
 
-db = SQLAlchemy()
+# db = SQLAlchemy()
 
 
 # ____________________________
@@ -15,11 +19,18 @@ def create_app():
     else:
         app.config.from_object('config.ConfigPro')
 
-    db.init_app(app)
+   
 
     return app 
 
 app = create_app()
+
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+manager = Manager(app)
+manager.add_command('db', MigrateCommand)
+
+redis = Redis() 
 
 
 # ______________________________________________________________________
@@ -64,6 +75,10 @@ app.register_blueprint(catalog)
 
 '''
 Request Data
+
+>> python
+
+import request
 
 requests.post('http://127.0.0.1:5000/catalog/product-create',
 data={'name': 'iPhone 5S', 'price': '549.0', 'category': 'phone'})
