@@ -11,6 +11,8 @@
 from flask import request, jsonify, Blueprint 
 from my_app import db
 from my_app.mod_catalog.models import Product, Category
+
+from my_app import redis
 # ______________________________________________________________________
 
 catalog = Blueprint('catalog', __name__, url_prefix='/catalog')
@@ -27,13 +29,26 @@ def home():
 @catalog.route('/product/<id>/')
 def product(id):
     product = Product.query.get_or_404(id)
+
+    # Saveing the visited items to redis
+    product_key = 'product-{}'.format(product.id)
+    redis.set(product_key, product.name)
+    redis.expire(product_key, 600)
+
     return 'Product - {} <br> Price - {}'.format(product.name,  product.price)
 
-# ______________________  
+# ______________________ 
+    
 
-@catalog.route('/products/')
-def products():
-    products = Product.query.all() 
+# @catalog.route('/products/')
+@catalog.route('/products/<int:page>')
+def products(page):
+
+    # products = Product.query.all()
+
+    # Adding pagination in the search query
+    products = Product.query.paginate(page, 2, error_out=False).items
+    
     res = {} 
     
     for product in products:
@@ -107,3 +122,15 @@ def categories():
                 }
     
     return jsonify(res)
+
+# ______________________ 
+
+@catalog.route('/recent-products')
+def recent_products():
+    # In this line we get all the keys
+    keys_alive = redis.keys('product-*')
+
+    # And here we use a List Comprehensions to make a list with the product-names
+    products = [redis.get(k).decode('utf-8') for k in keys_alive]
+
+    return jsonify({'products': products})
