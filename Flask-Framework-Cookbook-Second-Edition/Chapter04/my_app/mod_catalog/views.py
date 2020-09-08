@@ -4,27 +4,30 @@
 # get_or_404()
 # paginate()
 
-
 # ______________________________________________________________________
 
 
-from flask import request, jsonify, Blueprint 
-from my_app import db
-from my_app.mod_catalog.models import Product, Category
+from flask import render_template, request, jsonify, Blueprint
+from my_app import db 
+from my_app.mod_catalog.database import Product, Category 
 
 from my_app import redis
+
 # ______________________________________________________________________
+
 
 catalog = Blueprint('catalog', __name__, url_prefix='/catalog')
 # ______________________________________________________________________
+# GET ROUTES
 
 
 @catalog.route('/')
-@catalog.route('/home/')
+@catalog.route('/hone/')
 def home():
-    return "Welcome to the Catalog Home."
+    return "Welcom to the Catalog Homepage!"
 
-# ______________________   
+
+# ______________________ 
 
 @catalog.route('/product/<id>/')
 def product(id):
@@ -39,30 +42,64 @@ def product(id):
 
     return 'Product - {} <br> Price - {}'.format(product.name,  product.price)
 
-# ______________________ 
-    
 
-# @catalog.route('/products/')
+# ______________________ 
+
 @catalog.route('/products/<int:page>')
 def products(page):
 
     # products = Product.query.all()
 
     # Adding pagination in the search query
-    products = Product.query.paginate(page, 2, error_out=False).items
-    
-    res = {} 
-    
+    products = Product.query.paginate(page, 3, error_out=False).items
+
+    res = {}
+
     for product in products:
         res[product.id] = {
-            'name': product.name,
+            'name': product.name, 
             'price': str(product.price),
             'category': product.category.name
         }
+    return jsonify(res)
+
+# ______________________ 
+
+@catalog.route('/categories')
+def categories():
+    categories = Category.query.all() 
+    res = {}
+
+    for category in categories:
+        res[category.id] = {'name': category.name}
+      
+
+        res[category.id]['products'] = {}
+
+        for product in category.products:
+            res[category.id]['products'][product.id] = {
+                    'id': product.id,
+                    'name':product.name,
+                    'price': str(product.price) 
+                }
     
     return jsonify(res)
 
-# ______________________  
+
+# ______________________ 
+@catalog.route('/recent-products')
+def recent_products():
+    # In this line we get all the keys
+    keys_alive = redis.keys('product-*')
+
+    # And here we use a List Comprehensions to make a list with the product-names
+    products = [redis.get(k).decode('utf-8') for k in keys_alive]
+
+    return jsonify({'products': products})
+
+
+# ______________________________________________________________________
+# POST ROUTES
 
 @catalog.route('/product-create', methods=['POST'])
 def product_create():
@@ -83,6 +120,19 @@ def product_create():
 
     return 'Product created'
 
+'''
+
+>> python
+
+import requests
+
+requests.post('http://127.0.0.1:5000/catalog/product-create',
+data={'name': 'Ocean 39 GMT premium 500 Ceramic', 'price': '690', 'category': 'watch'})
+
+requests.post('http://127.0.0.1:5000/catalog/product-create',
+data={'name': 'Sinn 556 A RS', 'price': '1190', 'category': 'watch'})
+'''
+
 # ______________________  
 
 @catalog.route('/category-create', methods=['POST'])
@@ -101,38 +151,3 @@ def crete_category():
     db.session.commit()
 
     return 'Categort created'
-
-
-
-# ______________________  
-
-@catalog.route('/categories')
-def categories():
-    categories = Category.query.all()
-    res = {} 
-
-    for category in categories:
-        res[category.id] = {'name': category.name}
-
-        res[category.id]['products'] = {}
-
-        for product in category.products:
-            res[category.id]['products'][product.id] = {
-                    'id': product.id,
-                    'name':product.name,
-                    'price': str(product.price) 
-                }
-    
-    return jsonify(res)
-
-# ______________________ 
-
-@catalog.route('/recent-products')
-def recent_products():
-    # In this line we get all the keys
-    keys_alive = redis.keys('product-*')
-
-    # And here we use a List Comprehensions to make a list with the product-names
-    products = [redis.get(k).decode('utf-8') for k in keys_alive]
-
-    return jsonify({'products': products})
