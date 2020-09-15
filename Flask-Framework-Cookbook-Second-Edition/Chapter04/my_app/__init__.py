@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 from redis import Redis
 
+from flask_cors import CORS, cross_origin
 # ______________________________________________________________________
 
 def create_app():
@@ -20,6 +21,7 @@ app = create_app()
 db = SQLAlchemy(app)
 
 redis = Redis()
+CORS(app)
 
 # ______________________________________________________________________
 from my_app.mod_catalog.database import Product, Category
