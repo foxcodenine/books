@@ -1,4 +1,4 @@
-from flask import Flask , jsonify
+from flask import Flask , jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 
 from redis import Redis
@@ -51,7 +51,6 @@ def check_db_conection():
     print('>>',res)    
 
     return jsonify(res)
-
 
 
 # ______________________________________________________________________

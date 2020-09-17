@@ -11,9 +11,13 @@ from flask import render_template, request, jsonify, Blueprint
 from my_app import db 
 from my_app.mod_catalog.database import Product, Category 
 
-from my_app import redis
+from my_app import redis, app
 
 from flask_cors import CORS, cross_origin
+
+from flask import make_response, send_from_directory
+from werkzeug.exceptions import HTTPException
+import os 
 
 # ______________________________________________________________________
 
@@ -248,3 +252,57 @@ def crete_category():
     db.session.commit()
 
     return 'Categort created'
+
+# ______________________________________________________________________  
+# Error handiling:
+# This will render a template for an 404 error .
+
+# @app.errorhandler(404)
+# def page_not_found(e):
+#     return render_template('404.html'), 404
+
+# ______________________  
+
+# Or this will accept all error, it is set to return a json as body 
+# and has a header.
+
+@app.errorhandler(HTTPException)
+def http_error_handler(e):
+
+    error_body = jsonify({
+        'code': e.code,
+        'name': e.name,
+        'description': e.description
+    })
+
+    response = make_response(
+        error_body,
+        e.code
+    )
+    response.headers['Content-Type'] = 'application/json'
+    response.headers['Code'] = e.code
+    response.headers['Error'] = e.name
+    response.headers['Description'] = e.description
+   
+
+    # return response
+
+    # or here is set to return a template
+    return render_template(
+        'error.html', 
+        code=e.code ,
+        name=e.name,
+        description=e.description
+    )
+# ______________________________________________________________________ 
+# coffee_tree_leafs_icon.svg
+
+# Adding a favicon
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(
+                os.path.join(app.root_path, 'static/icon'),
+                'coffee_tree_leafs_icon.ico',
+                mimetype='image/vnd.microsoft.icon'
+    )
