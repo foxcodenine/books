@@ -7,7 +7,7 @@
 # ______________________________________________________________________
 
 
-from flask import render_template, request, jsonify, Blueprint
+from flask import render_template, request, jsonify, Blueprint, url_for, flash, redirect
 from my_app import db 
 from my_app.mod_catalog.database import Product, Category 
 
@@ -126,10 +126,6 @@ def products(page=1):
     products = Product.query.paginate(page, 4)
     return render_template('products.html', products=products)
 
-
-
-
-
     
     
 # ______________________ 
@@ -181,9 +177,9 @@ def recent_products():
 # ______________________________________________________________________
 # POST ROUTES
 
-@catalog.route('/product-create', methods=['POST'])
-def product_create():
-
+@catalog.route('/_r/product-create', methods=['POST'])
+def product_create_r():
+    # this is the old router (_r)
     name = request.form.get('name')
     price = request.form.get('price')
     categ_name = request.form.get('category')
@@ -206,33 +202,71 @@ def product_create():
 
 import requests
 
-requests.post('http://127.0.0.1:5000/catalog/product-create',
+requests.post('http://127.0.0.1:5000/catalog/_r/product-create',
 data={'name': 'Ocean 39 GMT premium 500 Ceramic', 'price': '690', 'category': 'watch'})
 
-requests.post('http://127.0.0.1:5000/catalog/product-create',
+requests.post('http://127.0.0.1:5000/catalog/_r/product-create',
 data={'name': 'Sinn 556 A RS', 'price': '1190', 'category': 'watch'})
 
-requests.post('http://127.0.0.1:5000/catalog/product-create',
+requests.post('http://127.0.0.1:5000/catalog/_r/product-create',
 data={'name': 'CITIZEN Promaster Diver 200', 'price': 189.99', 'category': 'watch'})
 
-requests.post('http://127.0.0.1:5000/catalog/product-create',
+requests.post('http://127.0.0.1:5000/catalog/_r/product-create',
 data={'name': 'TISSOT PRS 516 Automatic', 'price': '325', 'category': 'watch'})
 
-requests.post('http://127.0.0.1:5000/catalog/product-create',
+requests.post('http://127.0.0.1:5000/catalog/_r/product-create',
 data={'name': 'TAG HEUER Formula 1', 'price': '1049', 'category': 'watch'})
 
-requests.post('http://127.0.0.1:5000/catalog/product-create',
+requests.post('http://127.0.0.1:5000/catalog/_r/product-create',
 data={'name': 'INVICTA Mako Pro Diver Automatic', 'price': '84.99', 'category': 'watch'})
 
-requests.post('http://127.0.0.1:5000/catalog/product-create',
+requests.post('http://127.0.0.1:5000/catalog/_r/product-create',
 data={'name': 'LONGINES HydroConquest Automatic', 'price': '865', 'category': 'watch'})
 
-requests.post('http://127.0.0.1:5000/catalog/product-create',
+requests.post('http://127.0.0.1:5000/catalog/_r/product-create',
 data={'name': 'HAMILTON Timeless Classic Automatic Silver Dial', 'price': '575', 'category': 'watch'})
 
-requests.post('http://127.0.0.1:5000/catalog/product-create',
+requests.post('http://127.0.0.1:5000/catalog/_r/product-create',
 data={'name': 'CASIO G-Shock Black Resin Strap', 'price': '63.50', 'category': 'watch'})
 '''
+
+
+@catalog.route('/product-create', methods=['GET', 'POST'])
+def product_create():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        price = request.form.get('price')
+        categ_name = request.form.get('category')   
+
+        print('>>', name, price, categ_name)    
+
+        # Check if category already in db
+        # If not it will be created
+
+        category = Category.query.filter_by(name=categ_name).first()
+
+        if not category:
+            category = Category(name=categ_name)    
+        
+        # Check if product already in db
+        # If not it will be created
+
+        product = Product.query.filter_by(name=name).first()
+
+        if product:
+            flash('The product {} has already been created!'.format(name), 'danger')
+            return redirect(url_for('catalog.product', id=product.id))
+        else:
+            product = Product(
+                name=name, price=price, category=category
+            )
+            db.session.add(product)
+            db.session.commit()
+            flash('The product {} has been created'.format(name), 'success')
+
+            return redirect(url_for('catalog.product', id=product.id))
+    return render_template('product-create.html')        
+        
 
 # ______________________  
 
@@ -306,3 +340,51 @@ def favicon():
                 'coffee_tree_leafs_icon.ico',
                 mimetype='image/vnd.microsoft.icon'
     )
+
+
+
+# ______________________________________________________________________
+# Search Route
+
+@catalog.route('product-search', methods=['GET', 'POST'])
+@catalog.route('product-search/<int:page>', methods=['GET', 'POST'])
+def product_search(page=1):
+
+    if request.method == 'GET':
+        return render_template('product-search.html')
+
+    if request.method == 'POST':
+
+        products = Product.query
+
+        # ___create filters___
+        
+        if request.form['name']:
+            name = request.form['name']
+            
+            products = products.filter(Product.name.like('%' + name + '%'))
+            print(products.all())
+        
+        if request.form['price-min'] or request.form['price-max']:
+
+            price_min = int(request.form['price-min'])
+            price_max = int(request.form['price-max'])
+            
+            print('>>>', price_min, price_max)
+            if not price_min : price_min = 0
+            if not price_max : price_max = 999999
+
+            products = products.filter(Product.price >= price_min).filter(Product.price <= price_max)
+
+        if request.form['category']:
+            category = request.form['category']
+
+            category_id = Category.query.filter_by(name = category).first().id
+
+            products = products.filter(Product.category_id == category_id)
+
+        # ___end filters___
+
+        return render_template(
+            'products.html', products=products.paginate(page, 10)
+        )

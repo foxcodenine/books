@@ -33,7 +33,7 @@ app.register_blueprint(catalog)
 
 @app.route('/')
 def index():
-    return '{}'.format(app.config['CHECK_ENV'])
+    return '{} {}'.format(app.config['CHECK_ENV'], app.config['SECRET_KEY'])
 
 # _______________________
 
