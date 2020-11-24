@@ -277,13 +277,17 @@ def product_create():
 
     form = ProductForm(csrf_enabled=False)
 
-    # In the following we are setting categories as a list of tuple with
-    # the id and name of all the categories. 
+    # In the following code:
+
+    # In the 1st line we are fetching the categories from db and after
+    # setting categories as a list of tuple with the id and name of all
+    # the categories. 
     
-    # In the 2nd line we are setting the categories to choices for the
+    # In the 2nd line we are setting the categories list to choices for the
     # category field to be displayed as options in the selection input.
-    categories = [(c.id, c.name) for c in Category.query.all()]
-    form.category.choices = categories
+
+    categories = [(c.id, c.name) for c in Category.query.all()] #<- 1st line
+    form.category.choices = categories #<- 2nd line
 
     if request.method == 'POST':
         name = form.name.data
