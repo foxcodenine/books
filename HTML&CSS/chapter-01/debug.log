@@ -1,0 +1,3 @@
+[0806/212639.581:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Ballfire\Reports\Dump: The system cannot find the path specified. (0x3)
+[0806/212639.623:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0806/212639.627:ERROR:crash_report_database_win.cc(580)] CreateDirectory C:\Program Files (x86)\Ballfire\Reports\Dump: The system cannot find the path specified. (0x3)

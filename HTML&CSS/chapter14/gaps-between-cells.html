@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Gaps Between Cells</title>
+
+        <style type="text/css">
+        
+        table   {margin: 10px;
+                display: inline;}
+
+        td {border: 2px solid #000000;
+            padding: 15px;
+            background-color: #0088dd;}
+
+        table.one {border-spacing: 15px;}
+
+        table.two {border-spacing: 5px 15px;}
+
+        table.three {border-spacing: 15px;
+                    border-collapse: collapse;}   
+        </style>
+
+    </head>
+    <body>
+        <table class="one">
+            <tr>
+                <td>1</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+        </table>
+        <table class="two">
+            <tr>
+                <td>1</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+        </table>
+        <table class="three">
+            <tr>
+                <td>1</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+        </table>
+
+    </body>
+</html>
+
+<!-- try to build this form: https://formalize.me/ -->

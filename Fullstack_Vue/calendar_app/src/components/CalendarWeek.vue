@@ -4,7 +4,7 @@
 
         <app-calendary-day  v-for=" day in sharedState.seedData" 
                             v-bind:key="day.id"
-                            v-bind:day="day"                            
+                            v-bind:day="day"
         >  </app-calendary-day>
       </div>
 

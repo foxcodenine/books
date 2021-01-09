@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block container %}
+
+<h1>Welcome to the Catalog Home</h1>
+<a href="{{ url_for('catalog.products') }}" >
+    Click here to see the catalog
+    <span id="catalog_link"  class="badge"></span>
+</a>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    window.onload = function(){
+        
+        fetch('http://127.0.0.1:5000/catalog/', {
+            method: 'GET',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+        .then(function(respons) {
+            return respons.json()
+        })
+        .then(function(data) {
+            console.log('>>',data)
+            let markup = data.count;
+            document.querySelector('#catalog_link').innerText = markup;
+        })
+    }
+    
+</script>
+{% endblock %}

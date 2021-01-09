@@ -197,7 +197,6 @@ def product_create_r():
     return 'Product created'
 
 '''
-
 >> python
 
 import requests
@@ -265,22 +264,18 @@ def product_create():
             flash('The product {} has been created'.format(name), 'success')
 
             return redirect(url_for('catalog.product', id=product.id))
-    return render_template('product-create.html')        
-        
+    return render_template('product-create.html')
 
 # ______________________  
 
 @catalog.route('/category-create', methods=['POST'])
 def crete_category():
-    name = request.form.get('name')
-    
+    name = request.form.get('name')    
 
     category = Category.query.filter_by(name=name).first()
 
     if not category:
         category = Category(name)
-
-
 
     db.session.add(category)
     db.session.commit()
@@ -318,7 +313,6 @@ def http_error_handler(e):
     response.headers['Error'] = e.name
     response.headers['Description'] = e.description
    
-
     # return response
 
     # or here is set to return a template
@@ -340,8 +334,6 @@ def favicon():
                 'coffee_tree_leafs_icon.ico',
                 mimetype='image/vnd.microsoft.icon'
     )
-
-
 
 # ______________________________________________________________________
 # Search Route
@@ -388,3 +380,4 @@ def product_search(page=1):
         return render_template(
             'products.html', products=products.paginate(page, 10)
         )
+# ______________________________________________________________________
