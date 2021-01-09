@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head><title>Example</title></head>
+    <body>
+        <form action="http://example.com/profile.php" method="POST">
+        <fieldset>
+            <legend>Your Details:</legend>
+            <label for="name">Name: </label> 
+            <input type="text" id="name" name="name" size="30" 
+            maxlength="100"><br>
+            <label for="email">Email: </label> 
+            <input type="email" id="email" name="email" size="30" 
+            maxlength="100">
+        </fieldset>
+        <fieldset>
+            
+            <legend>Your Review:</legend>
+            <p>                
+                <label for="hear">How did you hear about us? </label>
+                <select name="referrer" id="hear">
+                    <option value="google">Google</option>
+                    <option value="advert">Advert</option>
+                    <option value="friend">Friend</option>
+                    <option value="other">Other</option>                
+                </select>
+            </p>
+            <p>Would you visit again?<br>
+                <label ><input type="radio" name="visit" value="yes"> Yes</label>
+                <label ><input type="radio" name="visit" value="no"> No</label>
+                <label ><input type="radio" name="visit" value="maybe"> Maybe</label>
+            </p>
+            <p>
+                <label for="commens">Commens: </label><br>
+                <textarea name="commens" id="commens" cols="40" rows="4"></textarea>
+                <br><br>
+                <label>
+                    <input type="checkbox" name="subscribe" checked>
+                    Sign me up for email updates
+                </label><br>
+                <input type="submit" value="Submit review">
+            </p>
+        </fieldset>
+        </form>
+    </body>
+</html>

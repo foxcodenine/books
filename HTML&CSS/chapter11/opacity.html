@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Opacity</title>
+        <style type="text/css">
+            div {
+                width: 100px;
+                height: 100px;
+                margin: 40px;
+                display: inline-block;
+                background-color: #ee3e80;}
+            p {
+                width: 100px;
+                height: 100px;
+                position: relative;
+                margin: 20px;
+                top: 20px;
+                left: 20px;
+            }
+            /* Method_1. first we select color and then opacity */
+            .one {
+                background-color: rgb(0,0,0);
+                opacity: 0.5;
+            }
+            /* Method_2. here we used a rgba value in the background-color
+            the first background-color is being over written
+            it is only used if browser does not support rgba or opacity */
+            .two {
+                background-color: rgb(0,0,0);
+                background-color: rgba(0,0, 0, 0.15);
+            }
+        </style>
+    </head>
+    <body>
+        <div><p class='one'></p></div>
+        <div><p class='two'></p></div>
+    </body>
+</html>

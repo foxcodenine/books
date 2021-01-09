@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(212, 205, 185)
+}
+
+/* h1, h2 {
+    font-family: 'Courier New', Courier, monospace
+} */
+
+/* li {
+    list-style-type: georgian;
+    color: brown;
+} */
+
+/* #introduction {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+
+p a {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+} */
+
+p.note {
+    font-family: 'Times New Roman', Times, serif
+}
