@@ -9,14 +9,14 @@ from my_app import db
 
 
 class Product(db.Model):
-    __tablename__ = 'product'
+    __tablename__ = 'fcb_product'
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
     price = db.Column(db.Numeric(6, 2), nullable=False)
 
-    category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
-    category = db.relationship('Category', backref=db.backref('products', lazy='dynamic'))
+    category_id = db.Column(db.Integer, db.ForeignKey('fcb_category.id'))
+    category = db.relationship('Category', backref=db.backref('fcb_products', lazy='dynamic'))
 
     def __init__(self, name, price, category):
         self.name = name
@@ -29,7 +29,7 @@ class Product(db.Model):
 # ____________________________
 
 class Category(db.Model):
-    __tablename__ = 'category'
+    __tablename__ = 'fcb_category'
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)

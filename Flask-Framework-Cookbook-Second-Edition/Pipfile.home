@@ -4,21 +4,23 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-pylint = "*"
 
 [packages]
-python-dotenv = "*"
+psycopg2 = "*"
 flask = "*"
+python-dotenv = "*"
 ccy = "*"
 flask-moment = "*"
-flask-cors = "*"
+flask-core = "*"
 flask-sqlalchemy = "*"
 pymysql = "*"
 cryptography = "*"
 requests = "*"
-flask-migrate = "==2.5.2"
-flask-script = "*"
 redis = "*"
+flask-migrate = "*"
+flask-script = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.8"
+# if Pipenv fails to install psycopg2
+# sudo apt-get install libpq-dev
