@@ -1,12 +1,40 @@
+<!-- 
+// Package vlucas/phpdotenv
+// https://github.com/vlucas/phpdotenv
+
+to install:     $ composer require vlucas/phpdotenv
+ -->
+
+<?php
+// _____________________________________________________________________
+//  loading all packages from vendor/autoload;
+
+    $vender_autoload_path  = __DIR__ . '/vendor/autoload.php';
+    require_once($vender_autoload_path);
+?>
+
+
+<?php
+// _____________________________________________________________________
+// loading .env variables;
+    $env_path = realpath(__DIR__);
+
+    $dotenv = Dotenv\Dotenv::createImmutable($env_path);
+    $dotenv->load();
+
+    
+
+?>
+
 <?php
 
-$db = new mysqli("localhost", "admin", "umbrella", "library");
+$db = new mysqli($_ENV['DB_HOST'], $_ENV['DB_NAME'], $_ENV['DB_PASSWORD'], $_ENV['DB_NAME']);
 
 if ($db->connect_errno) {
     die("Connecting Error ({$db->connect_errno}) {$db->connect_errno}"); 
 }
 
-$sql = "SELECT * FROM books WHERE available = 1 ORDER BY title";
+$sql = "SELECT * FROM pp4_books WHERE available = 1 ORDER BY title";
 
 $result = $db->query($sql);
 
