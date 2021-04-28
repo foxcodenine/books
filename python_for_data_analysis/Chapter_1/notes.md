@@ -16,19 +16,23 @@ To reactivate set it to True:
 
     $ conda activate base
 
-### To open ipyhton
+### Activate Conda Envierment:
 
-    Activate Conda Envierment:
     $ conda activate base
 
-    Open ipython:
+### Deactivate conda envierment
+
+    $ conda deactivate
+
+### To open ipyhton
     $ ipyhton
+
 
 ### Install or update python packages:
 
     $ conda install 'package name'
     $ conda update 'package name'
-    
+
     (if this doesn't work try pip while conda [base] is active)
 
     $ pip install 'package name'
