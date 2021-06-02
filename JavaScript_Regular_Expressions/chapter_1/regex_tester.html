@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Regex Tester</title>
+
+        <!-- <link rel="stylesheet"  href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> -->
+
+        <link rel="shortcut icon" href="./static/images/feedback3.png" type="image/x-icon">  
+        <link rel="stylesheet" href="./static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+        <script src="./static/jquery_2.0.3/jquery.min.js"></script>
+        
+        <style>
+            body{
+                margin-top: 30px;
+            }
+            .label {
+                margin: 0px 3px;
+            }
+        </style>
+        
+    </head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="alert alert-danger hide" id="alert-box"></div>
+            <div class="form-group">
+                <label for="input-text">Text</label>
+                <input type="text" class="form-control" id="input-text" placeholder="Text" >
+            </div>
+            <label for="input-regex">Regex</label>
+            <div class="input-group">
+                <input  type="text" class="form-control" id="input-regex"  placeholder="Regex" >
+                <span class="input-group-btn">
+                    <button  class="btn btn-default" id="test-button" type="button">
+                        Test!
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h3>Results</h3>
+        <div class="col-sm-12">
+        <div class="well well-lg" id="results-box"></div>
+        </div>
+    </div>
+</div> 
+<script>
+    //JS code goes here
+</script>
+</body>
+</html>
