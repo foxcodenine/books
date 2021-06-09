@@ -10,7 +10,13 @@
 </head>
 <body>
     <div class="container">
-        <h2 class="title">Chapter 1</h2>
+        <h2 class="title">Chapter 1 &nbsp; Getting Started with Regex</h2>
+
+        <section>
+            <h3>The RegExp constructor</h3>
+            <p>let rgx1 = new RegExp("hello", "g");</p>
+            <p>let rgx2 = /hello/g;</p>
+        </section>
 
         <section>
             <h3>Using pattern flags</h3>
@@ -29,6 +35,77 @@
     
             <p>The g modifier is used to perform a global match (find all matches
                 rather than stopping after the first match).</p>
+        </section>
+        <section>
+            <h3>Using the rgx.test method</h3>
+
+            <p>The test method only returns true or false, based on whether a
+            string matches a pattern or not.</p>
+
+            <p>rgx = /hello/;</p>
+            <p>console.log(rgx.test("hello"));</p>
+            <p class="answer">true</p>
+        </section>
+        <section>
+            <h3>Using the rgx.exec method</h3>
+
+            <p>The exec function also returns some information about the match.</p>
+
+            <p>console.log(rgx.exec("hello"));</p>
+            <p class="answer">["hello", index: 0, input: "hello", groups: undefined]</p>
+
+            <p>console.log(rgx.exec("hi"));</p>
+            <p class="answer">null</p>
+        </section>
+        <section>
+            <h3>Using the String.replace method</h3>
+
+            <p>The replace method will switch the first occurrence,
+            adding the g flag, will replace all the occurrences.</p>
+
+            <p>str = 'foo foo';</p>
+
+            <p>str.replace(/foo/, 'qux')</p>
+            <p class="answer">qux foo</p>
+
+            <p>str.replace(/foo/g, 'qux')</p>
+            <p class="answer">qux qux</p>
+
+        </section>
+        <section>
+            <h3>Using the String.search method</h3>
+
+            <p>The sarch method find the (zero-based) index of the first
+            match in a string.</p>
+
+            <p>let str3 = "hello world!"</p>
+
+            <p>console.log(str3.search(/world/));</p>
+            <p class="answer">6</p>
+            
+        </section>
+        <section>
+            <h3>Using the String.match method</h3>
+
+            <p>The match method returns the same output as the exec
+            function we saw earlier when there was no g flag (it
+            includes the index and input properties), but returned a
+            regular Array of all the matches when the g flag was
+            set.</p>
+
+            <p>let str4 = "abcabc";</p>
+
+            <p>console.log(str4.match(/b/));</p>
+            <p class="answer">>["b", index: 1, input: "abcabc", groups: undefined]</p>
+
+            <p>console.log(str4.match(/b/g));</p>
+            <p class="answer">>(2) ["b", "b"]</p>
+
+            <p>console.dir(str4.match(/b/g));</p>
+
+            <p class="answer">>Array(2)</p>
+            
+
         </section>
     </div>
     <script src="./static/script.js"></script>

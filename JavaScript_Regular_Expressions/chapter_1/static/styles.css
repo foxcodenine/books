@@ -45,6 +45,7 @@ h2 {
 section {
     border: 1px solid black;
     padding: 2rem 1rem;
+    margin-bottom: 2rem;
 }
 
 h3 {
@@ -61,4 +62,9 @@ p {
     font-family:  Calibri, 'Trebuchet MS', sans-serif;
     text-align: justify;
     margin-bottom: 1.5rem;
+}
+
+.answer {
+    color: blue;
+    margin-top: -2rem;
 }

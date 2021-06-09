@@ -42,6 +42,9 @@ ppp('Using the rgx.exec method');
 console.log(rgx3.exec("hello"));
 console.log(rgx3.exec("Hello"));
 console.log(rgx4.exec("hi hEllo"));
+let rgx5 = /hello/gi;
+console.dir(rgx5.exec("hi hello hello"));
+
 
 // _____________________________________________________________________
 
@@ -63,9 +66,10 @@ console.log(str2.replace(/foo/ig, 'qux'))
 
 ppp('Using the String.search method'); 
 
-let str3 = "hello world!"
+let str3 = "hello world world!"
 
 console.log(str3.search(/world/));
+
 
 // _____________________________________________________________________
 

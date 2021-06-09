@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./static/styles.css">
+    <link rel="shortcut icon" href="./static/images/feedback3.png" type="image/x-icon">  
+    <title>Chapter 2</title>
+</head>
+<body>
+    <div class="container">
+        <h2 class="title">Chapter 2 &nbsp; The Basics</h2>
+
+        <section>
+            <h3>Matching a wild card character</h3>
+            
+            <p>A period in Regex will match any character except a new line, so it can include
+            letters, numbers, symbols, and so on.</p>
+
+            <p>let str, rgx;</p>
+
+            <p>str = '123 1b3 1 3 133 321'</p>
+
+            <p>rgx = /1.3/g;</p>
+
+            <p>console.log(str.match(rgx));</p>
+            <p class="answer">>(4) ["123", "1b3", "1 3", "133"]</p>
+        </section>
+
+        <section>
+            <h3>Matching digits</h3>
+
+            <p>The backslash d  or digit special character will match any
+            character between 0 to 9.</p>
+
+            <p>str = '123 1b3 1 3 133 321'</p>
+
+            <p>rgx = /1\d3/g;;</p>
+
+            <p>console.log(str.match(rgx));</p>
+            <p class="answer">>(2) ["123", "133"]</p>
+        </section>
+
+        <section>
+            <h3>Matching alphanumeric chars</h3>
+
+            <p>The backslash w  is a word special character. It will
+            match the underscore character, numbers, or any of the 26
+            letters of the alphabet (in both lowercase as well as
+            uppercase letters).</p>
+
+            <p>str = '123 1b3 1 3 133 321'</p>
+
+            <p>rgx = /1\w3/g;</p>
+
+            <p>console.log(str.match(rgx));</p>
+            <p class="answer">>(3) ["123", "1b3", "133"]</p>
+        </section>
+
+        <section>
+            <h3>Negating alphanumeric chars and digits</h3>
+
+            <p>If you want the negated versions of \d and \w, you
+            can just use their uppercase counterparts, \D and \W.</p>
+
+            <p>str = '123 1b3 1 3 133 321'</p>
+
+            <p>rgx = /1\D3/g;</p>
+
+            <p>console.log(str.match(rgx));</p>
+            <p class="answer">>(2) ["1b3", "1 3"]</p>
+
+            <p>rgx = /1\W3/g;;</p>
+
+            <p>console.log(str.match(rgx));</p>
+            <p class="answer">>["1 3"]</p>
+        </section>
+    </div>
+    <script src="./static/script.js"></script>
+</body>
+</html>
