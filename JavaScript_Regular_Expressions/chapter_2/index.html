@@ -71,10 +71,34 @@
             <p>console.log(str.match(rgx));</p>
             <p class="answer">>(2) ["1b3", "1 3"]</p>
 
-            <p>rgx = /1\W3/g;;</p>
+            <p>rgx = /1\W3/g;</p>
 
             <p>console.log(str.match(rgx));</p>
             <p class="answer">>["1 3"]</p>
+        </section>
+
+        <section>
+            <h3>Defining ranges in Regex</h3>
+
+            <p>If we create a range similar to [abc] and it will match a
+            single character, which is either a, b, or c</p>
+
+            <p>str = 'bicycle';</p>
+
+            <p>rgx = /[abc]/g;</p>
+
+            <p>console.log(str.match(rgx));</p>
+            <p class="answer">>(3) ["b", "c", "c"]</p>
+
+            <p>Regex allows you to use the (-) dash character to specify
+            a set of characters without needing to list them out.</p>
+
+            <p>str = 'Tim sam Bob maC Guy';</p>
+
+            <p>rgx = /[A-Z][a-z][a-z]/g;</p>
+
+            <p>console.log(str.match(rgx));</p>
+            <p class="answer">>["Tim", "Bob", "Guy"]</p>
         </section>
     </div>
     <script src="./static/script.js"></script>

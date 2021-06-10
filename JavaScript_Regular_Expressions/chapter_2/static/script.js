@@ -60,7 +60,7 @@ console.log(str.match(rgx));
 ppp('Defining ranges in Regex'); 
 
 
-str = 'christopher farrugia'
+str = 'bicycle'
 
 rgx = /[abc]/g;
 
@@ -72,3 +72,23 @@ str = 'Tim sam Bob maC Guy';
 rgx = /[A-Z][a-z][a-z]/g;
 
 console.log(str.match(rgx));
+
+// _____________________________________________________________________
+
+
+ppp('Matching the dash \- character and period \.'); 
+
+
+str = 'hello world  hello-world,'
+
+rgx = /hello[\- ]world/g;
+
+console.log(str.match(rgx));
+
+
+str = '123 2.4 .45'
+
+rgx = /[\d.][\d.]\d/g;
+console.log(str.match(rgx));
+
+// _____________________________________________________________________
