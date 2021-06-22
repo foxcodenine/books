@@ -92,3 +92,16 @@ rgx = /[\d.][\d.]\d/g;
 console.log(str.match(rgx));
 
 // _____________________________________________________________________
+
+
+ppp('Defining negated ranges'); 
+
+
+str = 'Tim sam Bob maC Guy,';
+
+rgx = /[^ ^A-Z][a-z][a-zA-Z]/g;
+
+console.log(str.match(rgx));
+
+
+// _____________________________________________________________________

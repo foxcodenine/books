@@ -100,6 +100,49 @@
             <p>console.log(str.match(rgx));</p>
             <p class="answer">>["Tim", "Bob", "Guy"]</p>
         </section>
+
+        <section>
+            <h3>Matching the dash - character and period .</h3>
+
+            <p>To match a dash or a period you need to escape it with a
+            backslash.</p>
+
+            <p>str = 'hello world  hello-world';</p>
+
+            <p>rgx = /hello[\- ]world/g;</p>
+
+            <p>console.log(str.match(rgx));</p>
+            <p class="answer">>(2) ["hello world", "hello-world"]</p>
+
+
+
+            <p>str = '123 2.4 .45';</p>
+
+            <p>rgx = /[\d.][\d.]\d/g;</p>
+
+            <p>console.log(str.match(rgx));</p>
+            <p class="answer">>(3) ["123", "2.4", ".45"]</p>
+        </section>
+
+        <section>
+            <h3>Defining negated ranges</h3>
+
+            <p>A negated range we are specifying what not to match. To
+            create a negated range, you can start the range with a (^)
+            caret character to match any character.</p>
+
+
+            <p>str = 'Tim sam Bob maC Guy,';</p>
+
+            <p>rgx = /[^ ^A-Z][a-z][a-zA-Z]/g;</p>
+
+            <p>console.log(str.match(rgx));</p>
+
+            <p class="answer">>(2) ["sam", "maC"]</p>
+
+            <p class="note">Here we use ^ to remove a black space and a capital at the start.</p>
+
+        </section>
     </div>
     <script src="./static/script.js"></script>
 </body>
