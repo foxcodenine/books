@@ -8,7 +8,7 @@ $(function() {
 
     function toggleBox(i) {
         box.fadeToggle(500, function() {
-            i = i + 1;
+            i = i++;
             if(i < 10) {
                 para.text(i);
                 toggleBox(i);
