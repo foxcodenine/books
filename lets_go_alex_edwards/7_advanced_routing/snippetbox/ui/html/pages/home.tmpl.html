@@ -1,0 +1,26 @@
+{{ define "title" }} Home - Snippetbox {{ end }}
+
+{{ define "main" }}
+    {{ with .Snippets }}
+        <h2>Latest Snippets</h2>
+        {{ if . }}
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Created</th>
+                <th>ID</th>
+            </tr>
+            {{ range . }}
+            <tr>
+                <td><a href="/snippet/view/{{.ID}}">{{ .Title }}</a></td>
+                <td>{{ .Created | humanDate | printf "Created: %s" }}</td>
+                <td>{{ .ID }}</td>
+                
+            </tr> 
+            {{ end }}
+        </table>
+        {{ else }}
+            <p>There is notting to see here yet!</p>
+        {{ end }}
+    {{end}}
+{{ end }}

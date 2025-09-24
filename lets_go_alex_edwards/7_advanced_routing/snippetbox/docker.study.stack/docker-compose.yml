@@ -1,0 +1,102 @@
+# Tip: set values in .env (see below). Compose will auto-load it.
+
+services:
+  mariadb:
+    image: mariadb:10.6
+    container_name: ${PROJECT_NAME}--mariadb
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      TZ: UTC
+    ports:
+      - "${MYSQL_HOST_PORT}:3306"
+    volumes:
+      # data dir
+      - ${BIND_BASE}/mariadb/data:/var/lib/mysql
+      # optional init scripts (*.sql or *.sh)
+      - ${BIND_BASE}/mariadb/init:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u$${MYSQL_USER} -p$${MYSQL_PASSWORD} || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  postgres:
+    # pick ONE image: plain Postgres or TimescaleDB
+    image: timescale/timescaledb:latest-pg16
+    # image: postgres:16
+    container_name: ${PROJECT_NAME}--postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      TZ: UTC
+    ports:
+      - "${POSTGRES_HOST_PORT}:5432"
+    volumes:
+      - ${BIND_BASE}/postgres/data:/var/lib/postgresql/data
+      - ${BIND_BASE}/postgres/init:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  # redis:
+  #   image: redis:7-alpine
+  #   container_name: ${PROJECT_NAME}--redis
+  #   command: >
+  #     sh -c '
+  #     exec redis-server
+  #       --requirepass "${REDIS_PASSWORD}"
+  #       --appendonly no
+  #       --save 300 1
+  #       --dir /data
+  #     '
+  #   ports:
+  #     - "${REDIS_HOST_PORT}:6379"
+  #   environment:
+  #     TZ: UTC
+  #   volumes:
+  #     - ${BIND_BASE}/redis/data:/data
+  #   healthcheck:
+  #     test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD}", "PING"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 10
+  #   restart: unless-stopped
+
+
+  # rabbitmq:
+  #   image: rabbitmq:3.13-management
+  #   container_name: ${PROJECT_NAME}--rabbitmq
+  #   environment:
+  #     RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+  #     RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASS}
+  #     # Optional:
+  #     # RABBITMQ_DEFAULT_VHOST: ${RABBITMQ_VHOST}
+  #   ports:
+  #     - "${RABBITMQ_MGMT_HOST_PORT}:15672"  # Web UI (http://localhost:${RABBITMQ_MGMT_HOST_PORT})
+  #     - "${RABBITMQ_HOST_PORT}:5672"        # AMQP
+  #     # For single-node study you usually DON'T need these:
+  #     # - "4379:4369"    # epmd (cluster discovery)
+  #     # - "25682:25672"  # inter-node clustering port
+  #   volumes:
+  #     - ${BIND_BASE}/rabbitmq/data:/var/lib/rabbitmq
+  #     - ${BIND_BASE}/rabbitmq/log:/var/log/rabbitmq
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "rabbitmq-diagnostics -q ping"]
+  #     interval: 30s
+  #     timeout: 10s
+  #     retries: 5
+  #   restart: unless-stopped
+
+
+networks:
+  default:
+    name: ${PROJECT_NAME}-net
