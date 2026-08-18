@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"io"
 	"log/slog"
 	"strings"
@@ -21,7 +22,7 @@ func copySourceToDest(source io.Reader, dest io.Writer) error {
 			}
 		}
 
-		if err == io.EOF {
+		if errors.Is(err, io.EOF) {
 			return nil
 		}
 
@@ -45,5 +46,5 @@ func main() {
 		return
 	}
 
-	slog.Info(dest.String())
+	slog.Info("copy complete", "result", dest.String())
 }

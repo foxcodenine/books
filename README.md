@@ -1,6 +1,10 @@
-# Books
+# Books and Articles
 
-Personal notes, exercises, and projects created while studying technical books.
+Personal notes, exercises, and projects created while studying technical books and articles.
+
+## Articles
+
+- [Technical articles and exercises](articles/)
 
 ## Active
 

@@ -1,11 +1,5 @@
 # AGENTS.md
 
-## Working mode
-
-@AGENTS_MODE.md
-
-Before starting any task, read `AGENTS_MODE.md` completely and follow its `CURRENT_MODE`. The `@AGENTS_MODE.md` line is a project convention, not a guaranteed native import directive.
-
 ## Purpose
 
 This directory is a personal study collection for technical articles. Each article may contain:
