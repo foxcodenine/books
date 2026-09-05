@@ -13,6 +13,8 @@ type Customer struct {
 // not HOW it's done. No mention of SQL, files, memory, etc.
 type CustomerStorer interface {
 	StoreCustomer(Customer) error
+	DeleteCustomer(string) error
+	ListCustomers() ([]Customer, error)
 }
 
 // -----------------------------------------------------------------------------
@@ -43,4 +45,12 @@ func (cs *CustomerService) CreateNewCustomer(id string) error {
 	}
 
 	return cs.store.StoreCustomer(customer)
+}
+
+func (cs *CustomerService) DeleteCustomer(id string) error {
+	return cs.store.DeleteCustomer(id)
+}
+
+func (cs *CustomerService) ListCustomers() ([]Customer, error) {
+	return cs.store.ListCustomers()
 }

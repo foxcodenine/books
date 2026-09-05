@@ -1,5 +1,11 @@
 # Stopping tickers and shutting down goroutines
 
+## Purpose
+
+This exercise shows how to stop time-based work and shut down a goroutine cleanly.
+
+The ticker produces repeated events, the timer decides when to stop, the `done` channel signals the goroutine, and the `WaitGroup` waits for it to finish.
+
 ## Exercise
 
 Write a `package main` program that prints a timestamp every 2 seconds for about 10 seconds, then exits cleanly.

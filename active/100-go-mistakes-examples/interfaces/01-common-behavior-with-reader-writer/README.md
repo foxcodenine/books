@@ -1,5 +1,11 @@
 # Common behavior with interfaces
 
+## Purpose
+
+This exercise shows how different types can share common behavior through an interface.
+
+`copySourceToDest` can read from any `io.Reader` and write to any `io.Writer`. It does not need to know the concrete source or destination types.
+
 ## Exercise
 
 Write a `package main` program that copies data from a source to a destination using the common behavior provided by Go's `io.Reader` and `io.Writer` interfaces.
